@@ -1,0 +1,662 @@
+<!doctype html>
+<html lang="">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta content="width=device-width, initial-scale=1, user-scalable=no" name="viewport">
+
+<title>Performance Ranking</title>
+
+<!-- Google icon -->
+<link rel="stylesheet" type="text/css" href="assets/css/icon.css">
+
+<!-- Bootstrap css -->
+<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+
+<!-- Material css -->
+<link rel="stylesheet" type="text/css" href="assets/css/material.min.css">
+<link rel="stylesheet" type="text/css" href="assets/css/material-theme.css" />
+<link rel="stylesheet" type="text/css" href="assets/css/material-admin.css">
+
+<!-- Select2 css-->
+<link rel="stylesheet" type="text/css" href="components/select2/css/select2.min.css" />
+<link rel="stylesheet" type="text/css" href="components/select2/css/select2-bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="components/select2/css/pmd-select2.css" />
+
+<!-- Date time picker css-->
+<link rel="stylesheet" type="text/css" href="components/datetimepicker/css/bootstrap-datetimepicker.css" />
+<link rel="stylesheet" type="text/css" href="components/datetimepicker/css/pmd-datetimepicker.css" />
+
+<!-- JQueryUI css -->
+<link rel="stylesheet" type="text/css" href="assets/css/jquery-ui.css">
+
+<!-- JQueryUI css -->
+<link rel="stylesheet" type="text/css" href="components/angular-auto-complete/angular-auto-complete.css">
+
+<!-- Overide styles -->
+<style type="text/css">
+	#searchinput {width: 400px;}
+	span .material-icons {margin-left: 8px; margin-top: 8px;}
+	.tbl-th2 {background-color: #f5f5f5; font-size: 14px; height: 28px;}
+	.tbl-tbody td {height: 35px;}
+	th, td {
+    padding-left: 5px;
+    padding-right: 5px;}
+    .org {font-size: 14px;}
+    #tbl_allocations {font-size: 14px;}
+    #tbl_ratings {font-size: 14px;}
+    #navbar_user {color: #fff;}
+    .navbar-header .navbar-brand {font-size: 19px;}
+    #inbox-icon {margin-top: -9px;}
+    svg {fill: #fff;}
+    a {fill: white;}
+
+</style>
+</head>
+
+<body>
+<!-- Header Starts -->
+<!--Start Nav bar -->
+<nav class="navbar navbar-inverse navbar-fixed-top pmd-navbar pmd-z-depth">
+  <div class="container-fluid">
+	<div class="navbar-header">
+		<a href="javascript:void(0);" data-target="basicSidebar" data-placement="left" data-position="slidepush" is-open="true" is-open-width="1200" class="btn btn-sm pmd-btn-fab pmd-btn-flat pmd-ripple-effect pull-left margin-r8 pmd-sidebar-toggle"><i class="material-icons md-light">menu</i></a>
+	  <a class="navbar-brand" href="javascript:void(0);">Performance Ranking</a>
+	</div>
+
+		<div class="collapse navbar-collapse pmd-navbar-right-icon pull-right navigation">
+			
+			<!-- Account settings -->
+            <div class="dropdown notification icons pmd-dropdown">
+			
+				<a href="javascript:void(0)" id="navbar_user" class="dropdown-toggle pmd-ripple-effect" data-toggle="dropdown" role="button" aria-expanded="true">
+					&nbsp;&nbsp;&nbsp;&nbsp; Hi, Jerik <span class="caret"></span>
+				</a>
+			
+				<div class="dropdown-menu dropdown-menu-right pmd-card pmd-card-default pmd-z-depth" role="menu">
+					<!-- Card header -->
+					<div class="pmd-card-title">
+						<div class="media-body media-middle">
+							<h3 class="pmd-card-title-text">Account Settings</h3>
+						</div>
+					</div>
+					
+					<!-- Notifications list -->
+					<ul class="list-group pmd-list-avatar pmd-card-list">
+						<li class="list-group-item unread">
+							<a href="account.html">
+								<div class="media-body">
+									<span class="list-group-item-heading">Change Password</span>
+								</div>
+							</a>
+						</li>
+						<li class="list-group-item">
+							<a href="login.html">
+								<div class="media-body">
+									<span class="list-group-item-heading">Logout</span>
+								</div>
+							</a>
+						</li>
+					</ul><!-- End account settings -->
+				</div>
+			 </div> <!-- End account settings -->
+			 
+		</div>
+
+
+		<div class="pmd-navbar-right-icon pull-right navigation">
+			<!-- Account settings -->
+            <div class="dropdown notification icons pmd-dropdown">
+			
+				<a href="javascript:void(0)" id="navbar_user" class="dropdown-toggle pmd-ripple-effect" data-toggle="dropdown" role="button" aria-expanded="true">
+					INBOX 
+					<div id="inbox-icon" data-badge="3" class="material-icons md-light pmd-sm pmd-badge pmd-badge-overlap">
+						<svg width="24" height="24" viewBox="0 -2 24 24" xmlns="http://www.w3.org/2000/svg">
+					    <path d="M0 0h24v24H0z" fill="none"/>
+					    <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z"/>
+						</svg>
+					</div>
+				</a> 
+			 </div> <!-- End account settings -->
+			 </div>
+
+		<div class="pmd-navbar-right-icon pull-right navigation"></div>
+
+
+	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	  	<form class="navbar-form navbar-left pull-left">
+	  	<div ng-app="mainApp">	
+			<div class="form-group" div ng-controller="MainCtrl as ctrl">
+				<input type="text" class="form-control" placeholder="Search" id="searchinput" ng-model="ctrl.colorName"
+	            placeholder="Search" auto-complete="ctrl.autoCompleteOptions" /> 
+			</div>
+		</div>	
+	  	</form>
+	</div>
+  </div>
+</nav>
+<!--End Nav bar -->
+<!-- Header Ends -->
+
+<!-- Sidebar Starts -->
+<div class="pmd-sidebar-overlay"></div>
+
+<!-- Left sidebar -->
+<aside id="basicSidebar" class="pmd-sidebar  sidebar-default pmd-sidebar-slide-push pmd-sidebar-left pmd-sidebar-open bg-fill-darkblue sidebar-with-icons" role="navigation">
+	<ul class="nav pmd-sidebar-nav">
+		<li class="pmd-ripple-effect"> 
+			<a href="index.html">					
+				<i class="material-icons media-left pmd-sm">
+					<svg width="30" height="30" viewBox="-3 0 30 30">
+						<path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z" fill="none"></path>
+					</svg>
+				</i> 
+				<span class="media-body">Dashboard</span>
+			</a> 
+		</li>
+		<li class="dropdown pmd-dropdown active pmd-ripple-effect"> 
+			<a aria-expanded="false" data-toggle="dropdown" class="btn-user dropdown-toggle media" data-sidebar="true" href="#">	
+				<i class="material-icons media-left pmd-sm">
+					<svg width="30" height="30" viewBox="-3 0 30 30">
+						<path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/>
+					</svg>
+				</i> 
+				<span class="media-body">Dropdown</span>
+				<div class="media-right media-bottom"><i class="dic-more-vert dic"></i></div>
+			</a> 
+			<ul class="dropdown-menu">
+				<li><a href="#">level 1</a></li>
+				<li><a href="#">level 2</a></li>
+			</ul>
+		</li>
+		<li class="pmd-ripple-effect"> 
+			<a href="login.html">					
+				<i class="material-icons media-left pmd-sm">
+					<svg width="30" height="30" viewBox="-3 0 30 30">
+						<path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-5 14H4v-4h11v4zm0-5H4V9h11v4zm5 5h-4V9h4v9z"/>
+					</svg>
+				</i> 
+				<span class="media-body">Other Menu</span>
+			</a> 
+		</li>
+	</ul>
+</aside><!-- End Left sidebar -->
+<!-- Sidebar Ends -->
+
+<!--content area start-->
+<div id="content" class="pmd-content content-area dashboard">
+
+	<div class="container-fluid">
+		<div class="row" id="card-masonry">
+
+		 <!-- Organizations -->
+		 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+			<div class="pmd-card pmd-z-depth">      
+				<div class="pmd-card-title">
+					<div class="media-left"> 
+						<svg class="service-icon img-circle bg-fill-feedback" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="-5 -5 34 34">
+						    <path d="M0 0h24v24H0z" fill="none"/>
+    						<path d="M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z"/>
+						</svg> 
+					</div>
+					<div class="media-body media-middle">
+						<h2 class="pmd-card-title-text typo-fill-secondary">Organizations</h2>
+					</div>
+				</div>
+				<div class="pmd-card-body">
+						<a class="org list-group-item list-group-item-info" href="javascript:void(0);">HRIS and Automation</a> 
+						<a class="org list-group-item" href="javascript:void(0);">Supervisory/R&amp;F Payrol &amp; Benefits Admin</a>  
+				</div>
+				<span class="btn-loader loader hidden">Loading...</span>
+			</div>
+		 </div> <!--end Organizations -->
+		 
+		 <!--Step 1-->
+		 <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+			<div class="pmd-card pmd-z-depth">      
+				<div class="pmd-card-title">
+					<div class="media-left"> 
+						<svg class="service-icon img-circle bg-fill-orange" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="-5 -5 34 34">
+						    <path d="M0 0h24v24H0z" fill="none"/>
+    						<path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/>
+						</svg> 
+					</div>
+					<div class="media-body media-middle">
+						<h2 class="pmd-card-title-text typo-fill-secondary">Determine Allocations per Category (Line, Staff, R/N)</h2>
+					</div>
+				</div>
+				<div class="pmd-card-body">
+					<div class="table-responsive">
+					<table id="tbl_allocations" class="pmd-table table-hover table-bordered" width="100%" style="text-align: center;">
+					<thead>
+					  <tr class="tbl-th">
+					    <th></th>
+					    <th colspan="3"><center>LINE</center></th>
+					    <th colspan="3"><center>STAFF</center></th>
+					    <th colspan="3"><center>R/N</center></th>
+					  </tr>
+					</thead>	
+					<tbody>  
+					  <tr>
+					    <td>Emp Count</td>
+					    <td width="5%"></td>
+					    <td>Allocation</td>
+					    <td>Budget</td>
+					    <td width="5%"></td>
+					    <td>Allocation</td>
+					    <td>Budget</td>
+					    <td width="5%"></td>
+					    <td>Allocation</td>
+					    <td>Budget</td>
+					  </tr>
+					  <tr>
+					    <td></td>
+					    <td>123</td>
+					    <td>123</td>
+					    <td></td>
+					    <td>123</td>
+					    <td>123</td>
+					    <td></td>
+					    <td>0</td>
+					    <td>0</td>
+					    <td></td>
+					  </tr>
+					  <tr>
+					    <td></td>
+					    <td>123</td>
+					    <td>123</td>
+					    <td></td>
+					    <td>123</td>
+					    <td>123</td>
+					    <td></td>
+					    <td>0</td>
+					    <td>0</td>
+					    <td></td>
+					  </tr>
+					  <tr>
+					    <td></td>
+					    <td>123</td>
+					    <td>123</td>
+					    <td></td>
+					    <td>123</td>
+					    <td>123</td>
+					    <td></td>
+					    <td>0</td>
+					    <td>0</td>
+					    <td></td>
+					  </tr>
+					  <tr>
+					    <td><b>Total</b></td>
+					    <td></td>
+					    <td><b>123</b></td>
+					    <td></td>
+					    <td></td>
+					    <td><b>123</b></td>
+					    <td></td>
+					    <td></td>
+					    <td><b>0</b></td>
+					    <td></td>
+					  </tr>
+					</tbody>  
+					</table>
+				</div> </div>
+				<span class="btn-loader loader hidden">Loading...</span>
+			</div>
+		 </div><!-- end Step 1-->
+
+		 <!--Step 2-->
+		 <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 pull-right">
+			<div class="pmd-card pmd-z-depth">      
+				<div class="pmd-card-title">
+					<div class="media-left"> 
+						<svg class="service-icon img-circle bg-fill-violet" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="-5 -6 34 34">
+						    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-5 14H4v-4h11v4zm0-5H4V9h11v4zm5 5h-4V9h4v9z"/>
+						    <path d="M0 0h24v24H0z" fill="none"/>
+						</svg>
+					</div>
+					<div class="media-body media-middle">
+						<h2 class="pmd-card-title-text typo-fill-secondary">Prepare Division Template</h2>
+					</div>
+				</div>
+				<div class="pmd-card-body">
+					<button type="button" class="btn btn-sm btn-primary pmd-ripple-effect">Population <span class="badge">13</span></button>
+					<button type="button" class="btn btn-sm btn-success pmd-ripple-effect">Qualified <span class="badge">11</span></button>
+					<button type="button" class="btn btn-sm btn-danger pmd-ripple-effect">Danger <span class="badge">12</span></button>
+					<br> <hr>
+
+						<div class="pmd-tabs">
+							<div class="pmd-tab-active-bar"></div>
+							<ul class="nav nav-tabs" role="tablist">
+								<li role="presentation" class="active"><a href="#1" aria-controls="default" role="tab" data-toggle="tab">All</a></li>
+								<li role="presentation"><a href="#2" aria-controls="default" role="tab" data-toggle="tab">Line Supervisor</a></li>
+								<li role="presentation"><a href="#3" aria-controls="default" role="tab" data-toggle="tab">Staff Supervisor</a></li>
+								<li role="presentation"><a href="#4" aria-controls="default" role="tab" data-toggle="tab">Rank &amp; File</a></li>
+							</ul>
+						</div>
+						<div class="pmd-card-body">
+							<div class="tab-content">
+								<div role="tabpanel" class="tab-pane active" id="1">
+									<button type="button" class="btn btn-sm btn-default pmd-ripple-effect">Meritorious <span class="badge pmd-badge-overlap">1</span></button>
+									<button type="button" class="btn btn-sm btn-default pmd-ripple-effect">Deserving <span class="badge">2</span></button>
+									<button type="button" class="btn btn-sm btn-default pmd-ripple-effect">Group <span class="badge">5</span></button>
+									<br><br>
+									<div class="table-responsive">	
+										<table id="tbl_ratings" class="pmd-table table-hover table-bordered" width="100%">
+										<thead>
+										  <tr class="tbl-th2">
+										    <th>#</th>
+										    <th>ID</th>
+										    <th>Surname</th>
+										    <th>First</th>
+										    <th>Middle</th>
+										    <th>Position</th>
+										    <th>Category</th>
+										    <th>Award Amount</th>
+										    <th>Rating</th>
+										    <th>Performance Rating</th>
+										    <th>KPI</th>
+										  </tr>
+										</thead>
+										<tbody class="tbl-tbody">  
+										  <tr>
+										    <td>#1</td>
+										    <td>123456</td>
+										    <td>Supnet</td>
+										    <td>Jerik</td>
+										    <td>Pogi</td>
+										    <td>Developer</td>
+										    <td>SS</td>
+										    <td>123,000</td>
+										    <td>      
+												<select class="select-simple" style="width: 90%;">
+												<option>Rating 1</option>
+												<option>Rating 2</option>
+												</select>
+											</td>
+										    <td>Performance Rating</td>
+										    <td>Exceedes Expectations</td>
+										  </tr>
+										  <tr>
+										    <td>#2</td>
+										    <td>123456</td>
+										    <td>Supnet</td>
+										    <td>Jerik</td>
+										    <td>Pogi</td>
+										    <td>Developer</td>
+										    <td>SS</td>
+										    <td>123,000</td>
+										    <td>      
+												<select class="select-simple" style="width: 90%;">
+												<option>Rating 1</option>
+												<option>Rating 2</option>
+												</select>
+											</td>
+										    <td>Performance Rating</td>
+										    <td>Exceedes Expectations</td>
+										  </tr>
+										  <tr>
+										    <td>#3</td>
+										    <td>123456</td>
+										    <td>Supnet</td>
+										    <td>Jerik</td>
+										    <td>Pogi</td>
+										    <td>Developer</td>
+										    <td>SS</td>
+										    <td>123,000</td>
+										    <td>      
+												<select class="select-simple" style="width: 90%;">
+												<option>Rating 1</option>
+												<option>Rating 2</option>
+												</select>
+											</td>
+										    <td>Performance Rating</td>
+										    <td>Exceedes Expectations</td>
+										  </tr> 
+										</tbody>  
+										</table>
+										<hr>
+										<span>
+										<button data-target="#transfer-form" data-toggle="modal" class="btn pmd-ripple-effect btn-info pmd-z-depth" type="button">Transfer Form</button>
+										<button data-target="#form-dialog" data-toggle="modal" class="btn pmd-ripple-effect btn-info pmd-z-depth" type="button">Popcorn </button>
+										<button type="button" class="btn pmd-btn-raised pmd-ripple-effect btn-primary">Print</button>
+										<button type="button" class="btn pmd-btn-raised pmd-ripple-effect btn-success">Submit</button>  
+										</span>
+									</div>
+									</div>
+<!-- /////////// TAB 2 -->
+									<div role="tabpanel" class="tab-pane" id="2">
+										
+									</div>
+
+<!-- /////////// TAB 3 -->
+									<div role="tabpanel" class="tab-pane" id="3">
+										
+									</div>
+<!-- /////////// TAB 4 -->
+									<div role="tabpanel" class="tab-pane" id="4">
+										
+									</div>
+							</div>
+						</div>
+				 </div>
+				<span class="btn-loader loader hidden">Loading...</span>
+			</div>
+		 </div><!-- end Step 2-->
+	</div>
+</div>
+</div><!--end content area-->
+
+
+<!-- /////////// MODAL 1-->
+	<div tabindex="-1" class="modal fade" id="form-dialog" style="display: none;" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header bordered">
+					<button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+					<h2 class="pmd-card-title-text">Form Modal</h2>
+				</div>
+				<div class="modal-body">
+					<form class="form-horizontal">
+						<div class="form-group pmd-textfield pmd-textfield-floating-label col-sm-12">
+							<label for="first-name">Name</label>
+							<input type="text" class="mat-input form-control" id="name" value="">
+						</div>
+						
+						<div class="form-group pmd-textfield pmd-textfield-floating-label col-sm-12">
+							<label for="regular1" class="control-label">Select Date</label>
+							<input type="text" id="datetimepicker-default" class="form-control" />
+						</div>
+						<div class="form-group pmd-textfield pmd-textfield-floating-label col-sm-12">
+							<label for="first-name">Name</label>
+							<input type="text" class="mat-input form-control" id="name" value="">
+						</div>
+						<div class="form-group pmd-textfield pmd-textfield-floating-label col-sm-12">
+							<label for="first-name">Name</label>
+							<input type="text" class="mat-input form-control" id="name" value="">
+						</div>
+						<div class="form-group pmd-textfield pmd-textfield-floating-label col-sm-12">
+							<label for="first-name">Name</label>
+							<select class="select-with-search pmd-select2 form-control" style="width: 100%;">
+								<!--<option></option> -->
+								<option>Select 1</option>
+								<option>Select 2</option>
+								<option>Select 3</option>
+							</select>
+						</div>
+						<div class="form-group col-sm-12">
+						<label class="checkbox-inline pmd-checkbox pmd-checkbox-ripple-effect">
+							<input type="checkbox" value="">
+							<span class="pmd-checkbox"> Check</span> </label>
+						<label class="checkbox-inline pmd-checkbox pmd-checkbox-ripple-effect">
+							<input type="checkbox" value="">
+							<span class="pmd-checkbox"> Check Check</span> </label>
+						</div>	
+						<div class="form-group col-sm-12">
+						<label class="radio-inline pmd-radio pmd-radio-ripple-effect">
+						<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" checked>
+						<span for="inlineRadio1">Yes</span> </label>
+						<label class="radio-inline pmd-radio pmd-radio-ripple-effect">
+						<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+						<span for="inlineRadio2">No</span> </label>	
+						</div>
+					</form>
+				</div>
+				<div class="pmd-modal-action">
+					<button data-dismiss="modal"  class="btn pmd-ripple-effect btn-primary" type="button">Save changes</button>
+					<button data-dismiss="modal"  class="btn pmd-ripple-effect btn-default" type="button">Discard</button>
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- End MODAL -->	
+
+<!-- /////////// MODAL 2 -->
+	<div tabindex="-1" class="modal fade" id="transfer-form" style="display: none;" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header bordered">
+					<button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+					<h2 class="pmd-card-title-text">Transfer Form</h2>
+				</div>
+				<div class="modal-body">
+					<form class="form-horizontal">
+						<fieldset>
+							<div class="form-group prousername pmd-textfield">
+							  <label class="control-label col-sm-4">Employee Name</label>
+							  <div class="col-sm-7">
+								<p class="form-control-static"><strong>Jerikson Supnet</strong></p>
+							  </div>
+							</div>
+							<div class="form-group prousername pmd-textfield">
+							  <label class="control-label col-sm-4">Current Organization Head</label>
+							  <div class="col-sm-7">
+								<p class="form-control-static"><strong>Jay Bulan</strong></p>
+							  </div>
+							</div>
+							<div class="form-group pmd-textfield">
+							  <label class="col-sm-4 control-label">Transfer to (Organizational Head)</label>
+							  <div class="col-sm-7">
+								<select class="select-with-search pmd-select2 form-control" style="width: 100%;">
+								<option>Select 1</option>
+								<option>Select 2</option>
+								<option>Select 3</option>
+								</select>
+							  </div>
+							</div>
+							<div class="form-group pmd-textfield">
+							  <label class="col-sm-4 control-label" for="u_fname">Select Organization/ Division</label>
+							  <div class="col-sm-7">
+								<select class="select-with-search pmd-select2 form-control" style="width: 100%;">
+								<option>Select 1</option>
+								<option>Select 2</option>
+								<option>Select 3</option>
+								</select>
+							  </div>
+							</div>
+							<div class="form-group pmd-textfield">
+							  <label class="col-sm-4 control-label" for="u_fname">Remarks</label>
+							  <div class="col-sm-7">
+								  <textarea class="form-control"></textarea>
+							  </div>
+							</div>
+						</fieldset>
+					</form>
+				</div>
+				<div class="pmd-modal-action">
+					<button data-dismiss="modal"  class="btn pmd-ripple-effect btn-primary" type="button">Save changes</button>
+					<button data-dismiss="modal"  class="btn pmd-ripple-effect btn-default" type="button">Discard</button>
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- End MODAL -->									
+
+
+<!-- Footer Starts -->
+<!--footer start-->
+<footer class="admin-footer">
+ <div class="container-fluid">
+ 	<ul class="list-unstyled list-inline">
+	 	<li class="pull-right">
+			<span class="pmd-card-subtitle-text">&copy; <span class="auto-update-year"></span>. All Rights Reserved.</span>
+        </li>
+    </ul>
+ </div>
+</footer>
+<!--footer end-->
+<!-- Footer Ends -->
+
+<!-- Scripts Starts -->
+<script src="assets/js/jquery-1.12.2.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/propeller.min.js"></script>
+<!-- Datetimepicker -->
+<script src="components/datetimepicker/js/moment-with-locales.js"></script>
+<script src="components/datetimepicker/js/bootstrap-datetimepicker.js"></script>
+<!-- Select2 js-->
+<script type="text/javascript" src="components/select2/js/select2.full.js"></script>
+<!-- Propeller Select2 -->
+<script type="text/javascript" src="components/select2/js/pmd-select2.js"></script>
+<!-- Angular -->
+<script type="text/javascript" src="components/angular-auto-complete/angular-auto-complete.js"></script>
+<!-- Scripts Ends -->
+<script>
+	$(".auto-update-year").html(new Date().getFullYear());
+	$('#datetimepicker-default').datetimepicker({
+		format: 'DD/MM/YYYY'
+	});
+	$(".select-with-search").select2({
+		theme: "bootstrap"
+	});
+</script> 
+<script>
+	$(document).ready(function() {
+		var sPath=window.location.pathname;
+		var sPage = sPath.substring(sPath.lastIndexOf('/') + 1);
+		$(".pmd-sidebar-nav").each(function(){
+			$(this).find("a[href='"+sPage+"']").parents(".dropdown").addClass("open");
+			$(this).find("a[href='"+sPage+"']").parents(".dropdown").find('.dropdown-menu').css("display", "block");
+			$(this).find("a[href='"+sPage+"']").parents(".dropdown").find('a.dropdown-toggle').addClass("active");
+			$(this).find("a[href='"+sPage+"']").addClass("active");
+		});
+	});
+</script>
+<script type="text/javascript">
+(function() {
+  "use strict";
+  var toggles = document.querySelectorAll(".c-hamburger");
+  for (var i = toggles.length - 1; i >= 0; i--) {
+    var toggle = toggles[i];
+    toggleHandler(toggle);
+  };
+  function toggleHandler(toggle) {
+    toggle.addEventListener( "click", function(e) {
+      e.preventDefault();
+      (this.classList.contains("is-active") === true) ? this.classList.remove("is-active") : this.classList.add("is-active");
+    });
+  }
+
+})();
+</script>
+<script type="text/javascript">
+angular.module('mainApp', ['autoCompleteModule'])
+    .controller('MainCtrl', function() {
+        var that = this;
+        that.colorName = null;
+        
+        that.autoCompleteOptions = {
+            minimumChars: 1,
+            data: function (searchText) {
+                searchText = searchText.toUpperCase();
+
+                var colors = _.filter(CSS_COLORS, function (color) {
+                    return color.name.startsWith(searchText);
+                });
+
+                return _.pluck(colors, 'name');
+            }
+        }
+    });
+</script>
+</body>
+</html>

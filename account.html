@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta content="width=device-width, initial-scale=1, user-scalable=no" name="viewport">
+
+<title>Account | Performance Ranking</title>
+
+<!-- Google icon -->
+<link rel="stylesheet" type="text/css" href="assets/css/icon.css">
+
+<!-- Bootstrap css -->
+<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+
+<!-- Material css -->
+<link rel="stylesheet" type="text/css" href="assets/css/material.min.css">
+<link rel="stylesheet" type="text/css" href="assets/css/material-theme.css" />
+<link rel="stylesheet" type="text/css" href="assets/css/material-admin.css">
+
+<!-- Select2 css-->
+<link rel="stylesheet" type="text/css" href="components/select2/css/select2.min.css" />
+<link rel="stylesheet" type="text/css" href="components/select2/css/select2-bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="components/select2/css/pmd-select2.css" />
+
+<!-- Date time picker css-->
+<link rel="stylesheet" type="text/css" href="components/datetimepicker/css/bootstrap-datetimepicker.css" />
+<link rel="stylesheet" type="text/css" href="components/datetimepicker/css/pmd-datetimepicker.css" />
+
+<!-- Overide styles -->
+<style type="text/css">
+	#searchinput {width: 400px;}
+	span .material-icons {margin-left: 8px; margin-top: 8px;}
+	#navbar_user {color: #fff;}
+</style>
+</head>
+
+<body>
+<!-- Header Starts -->
+<!--Start Nav bar -->
+<nav class="navbar navbar-inverse navbar-fixed-top pmd-navbar pmd-z-depth">
+  <div class="container-fluid">
+	<div class="navbar-header">
+		<a href="javascript:void(0);" data-target="basicSidebar" data-placement="left" data-position="slidepush" is-open="true" is-open-width="1200" class="btn btn-sm pmd-btn-fab pmd-btn-flat pmd-ripple-effect pull-left margin-r8 pmd-sidebar-toggle"><i class="material-icons md-light">menu</i></a>
+	  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+		<span class="sr-only">Toggle navigation</span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+	  </button>
+	  <a class="navbar-brand" href="javascript:void(0);">Performance Ranking</a>
+	</div>
+
+		<div class="pmd-navbar-right-icon pull-right navigation">
+			<!-- Notifications -->
+            <div class="dropdown notification icons pmd-dropdown">
+			
+				<a href="javascript:void(0)" title="Notification" class="dropdown-toggle pmd-ripple-effect"  data-toggle="dropdown" role="button" aria-expanded="true">
+					<div data-badge="3" class="material-icons md-light pmd-sm pmd-badge  pmd-badge-overlap">notifications_none</div>
+				</a>
+			
+				<div class="dropdown-menu dropdown-menu-right pmd-card pmd-card-default pmd-z-depth" role="menu">
+					<!-- Card header -->
+					<div class="pmd-card-title">
+						<div class="media-body media-middle">
+							<a href="notifications.html" class="pull-right">3 new notifications</a>
+							<h3 class="pmd-card-title-text">Notifications</h3>
+						</div>
+					</div>
+					
+					<!-- Notifications list -->
+					<ul class="list-group pmd-list-avatar pmd-card-list">
+						<li class="list-group-item" style="display:none">
+							<p class="notification-blank">
+								<span class="dic dic-notifications-none"></span> 
+								<span>You don´t have any notifications</span>
+							</p>
+						</li>
+						<li class="list-group-item unread">
+							<a href="javascript:void(0)">
+								<div class="media-body">
+									<span class="list-group-item-heading">Notifications 1</span>
+									<span class="list-group-item-text">5 Minutes ago</span>
+								</div>
+							</a>
+						</li>
+						<li class="list-group-item">
+							<a href="javascript:void(0)">
+								<div class="media-body">
+									<span class="list-group-item-heading">Notifications 2</span>
+									<span class="list-group-item-text">15 Minutes ago</span>
+								</div>
+							</a>
+						</li>
+						<li class="list-group-item unread">
+							<a href="javascript:void(0)">					
+								<div class="media-body">
+									<span class="list-group-item-heading">Notifications 3</span>
+									<span class="list-group-item-text">25 Minutes ago</span>
+								</div>
+							</a>
+						</li>
+					</ul><!-- End notifications list -->
+				</div>
+			 </div> <!-- End notifications -->
+			 </div>
+
+
+		<div class="pmd-navbar-right-icon pull-right navigation">
+			<!-- Account settings -->
+            <div class="dropdown notification icons pmd-dropdown">
+			
+				<a href="javascript:void(0)" id="navbar_user" class="dropdown-toggle pmd-ripple-effect" data-toggle="dropdown" role="button" aria-expanded="true">
+					Hi, Jerik <span class="caret"></span>
+				</a>
+			
+				<div class="dropdown-menu dropdown-menu-right pmd-card pmd-card-default pmd-z-depth" role="menu">
+					<!-- Card header -->
+					<div class="pmd-card-title">
+						<div class="media-body media-middle">
+							<h3 class="pmd-card-title-text">Account Settings</h3>
+						</div>
+					</div>
+					
+					<!-- Notifications list -->
+					<ul class="list-group pmd-list-avatar pmd-card-list">
+						<li class="list-group-item unread">
+							<a href="account.html">
+								<div class="media-body">
+									<span class="list-group-item-heading">Change Password</span>
+								</div>
+							</a>
+						</li>
+						<li class="list-group-item">
+							<a href="login.html">
+								<div class="media-body">
+									<span class="list-group-item-heading">Logout</span>
+								</div>
+							</a>
+						</li>
+					</ul><!-- End account settings -->
+				</div>
+			 </div> <!-- End account settings -->
+		</div>
+
+	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	  	<form class="navbar-form navbar-left pull-left">
+		<div class="form-group">
+			<input type="text" class="form-control" placeholder="Search" id="searchinput">
+		</div>
+			<button type="submit" class="btn btn-info"> Submit</button>
+	  	</form>
+	</div>
+  </div>
+</nav>
+<!--End Nav bar -->
+<!-- Header Ends -->
+
+<!-- Sidebar Starts -->
+<div class="pmd-sidebar-overlay"></div>
+
+<!-- Left sidebar -->
+<aside id="basicSidebar" class="pmd-sidebar  sidebar-default pmd-sidebar-slide-push pmd-sidebar-left pmd-sidebar-open bg-fill-darkblue sidebar-with-icons" role="navigation">
+	<ul class="nav pmd-sidebar-nav">
+		<li> 
+			<a class="pmd-ripple-effect" href="index.html">	
+				<i class="material-icons media-left pmd-sm">dashboard</i> 
+				<span class="media-body">Dashboard</span>
+			</a> 
+		</li>
+		<li class="dropdown pmd-dropdown active pmd-ripple-effect"> 
+			<a aria-expanded="false" data-toggle="dropdown" class="btn-user dropdown-toggle media" data-sidebar="true" href="#">	
+				<i class="material-icons media-left pmd-sm">dashboard</i> 
+				<span class="media-body">Dropdown</span>
+				<div class="media-right media-bottom"><i class="dic-more-vert dic"></i></div>
+			</a> 
+			<ul class="dropdown-menu">
+				<li><a href="#">level 1</a></li>
+				<li><a href="#">level 2</a></li>
+			</ul>
+		</li>
+		<li> 
+			<a class="pmd-ripple-effect" href="login.html">	
+				<i class="material-icons media-left pmd-sm">dashboard</i> 
+				<span class="media-body">Other Menu</span>
+			</a> 
+		</li>
+	</ul>
+</aside><!-- End Left sidebar -->
+<!-- Sidebar Ends -->
+
+<!--content area start-->
+<div id="content" class="pmd-content inner-page">
+
+	<!--tab start-->
+	<div class="container-fluid full-width-container about">
+		<!-- Title -->
+		<h1 class="section-title" id="services">
+			<span>Account</span>
+		</h1><!-- End Title -->
+	
+		<!--breadcrum start-->
+		<ol class="breadcrumb text-left">
+		  <li><a href="index.html">Dashboard</a></li>
+		  <li class="active">Account</li>
+		</ol><!--breadcrum end-->
+	
+		<div class="page-content profile-edit section-custom">
+			<div class="pmd-card pmd-z-depth">
+				<div class="pmd-card-body">
+					<div class="row">
+						<div class="col-lg-1 custom-col-1"> </div>
+						<div class="col-lg-9 custom-col-9">
+							<h3 class="heading">Personal Information</h3>
+							<div class="row">
+								<form class="form-horizontal">
+								  <fieldset>
+										<div class="form-group prousername pmd-textfield">
+										  <label class="control-label col-sm-3">Username</label>
+										  <div class="col-sm-9">
+											<p class="form-control-static"><strong>jerik</strong></p>
+										  </div>
+										</div>
+										<div class="form-group pmd-textfield">
+										  <label class="col-sm-3 control-label" for="u_fname">First Name</label>
+										  <div class="col-sm-9">
+											  <input type="text" class="form-control empty" id="inputEmail" value="Jerikson">
+										  </div>
+										</div>
+										<div class="form-group pmd-textfield">
+										  <label class="col-sm-3 control-label" for="u_fname">Last Name</label>
+										  <div class="col-sm-9">
+											  <input type="text" class="form-control empty" id="inputEmail" value="Supnet">
+										  </div>
+										</div>
+										<div class="form-group pmd-textfield">
+										  <label class="col-sm-3 control-label" for="u_fname">Email</label>
+										  <div class="col-sm-9">
+											  <input type="email" class="form-control empty" value="jerik@gmail.com" id="inputEmail" placeholder="">
+										  </div>
+										</div>
+										<div class="form-group btns margin-bot-30">
+										  <div class="col-sm-9 col-sm-offset-3">
+											<button type="submit" class="btn btn-primary pmd-ripple-effect">Update</button>
+											<button class="btn btn-default btn-link pmd-ripple-effect">Cancel</button>
+										  </div>
+										</div>
+								  </fieldset>
+								</form>
+							</div>
+							<h3 class="heading">Change Password</h3>
+							<div class="row">	
+								<form class="form-horizontal">
+								  <fieldset>
+									<div class="form-group pmd-textfield">
+										<label class="control-label col-sm-3" for="u_password">Password</label>
+										<div class="col-sm-9">
+											<input type="password" class="form-control empty" id="inputEmail" value="password">
+										</div>
+									</div>
+									<div class="form-group pmd-textfield">
+										<label class="control-label col-sm-3" for="u_password"></label>
+										<div class="col-sm-9">
+											<input type="password" class="form-control empty" id="inputEmail" value="">
+											<span class="help-text">Repeat password</span>
+										</div>
+									</div>
+									<div class="form-group btns">
+									  <div class="col-sm-9 col-sm-offset-3">
+										<button type="submit" class="btn btn-primary pmd-ripple-effect">Update</button>
+										<button class="btn btn-default btn-link pmd-ripple-effect">Cancel</button>
+									  </div>
+									</div>
+								  </fieldset>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div><!-- tab end -->
+	
+</div><!-- content area end -->
+
+<!-- Footer Starts -->
+<!--footer start-->
+<footer class="admin-footer">
+ <div class="container-fluid">
+ 	<ul class="list-unstyled list-inline">
+	 	<li class="pull-right">
+			<span class="pmd-card-subtitle-text">&copy; <span class="auto-update-year"></span>. All Rights Reserved.</span>
+        </li>
+    </ul>
+ </div>
+</footer>
+<!--footer end-->
+<!-- Footer Ends -->
+
+<!-- Scripts Starts -->
+<script src="assets/js/jquery-1.12.2.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/propeller.min.js"></script>
+<!-- Datetimepicker -->
+<script src="components/datetimepicker/js/moment-with-locales.js"></script>
+<script src="components/datetimepicker/js/bootstrap-datetimepicker.js"></script>
+<!-- Select2 js-->
+<script type="text/javascript" src="components/select2/js/select2.full.js"></script>
+<!-- Propeller Select2 -->
+<script type="text/javascript" src="components/select2/js/pmd-select2.js"></script>
+<!-- Scripts Ends -->
+<script>
+	$(".auto-update-year").html(new Date().getFullYear());
+	$('#datetimepicker-default').datetimepicker({
+		format: 'DD/MM/YYYY'
+	});
+	$(".select-with-search").select2({
+		theme: "bootstrap"
+	});
+</script> 
+<script>
+	$(document).ready(function() {
+		var sPath=window.location.pathname;
+		var sPage = sPath.substring(sPath.lastIndexOf('/') + 1);
+		$(".pmd-sidebar-nav").each(function(){
+			$(this).find("a[href='"+sPage+"']").parents(".dropdown").addClass("open");
+			$(this).find("a[href='"+sPage+"']").parents(".dropdown").find('.dropdown-menu').css("display", "block");
+			$(this).find("a[href='"+sPage+"']").parents(".dropdown").find('a.dropdown-toggle').addClass("active");
+			$(this).find("a[href='"+sPage+"']").addClass("active");
+		});
+	});
+</script>
+<script type="text/javascript">
+(function() {
+  "use strict";
+  var toggles = document.querySelectorAll(".c-hamburger");
+  for (var i = toggles.length - 1; i >= 0; i--) {
+    var toggle = toggles[i];
+    toggleHandler(toggle);
+  };
+  function toggleHandler(toggle) {
+    toggle.addEventListener( "click", function(e) {
+      e.preventDefault();
+      (this.classList.contains("is-active") === true) ? this.classList.remove("is-active") : this.classList.add("is-active");
+    });
+  }
+
+})();
+</script>
+</body>
+</html>
